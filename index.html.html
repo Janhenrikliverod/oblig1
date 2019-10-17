@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>obligatorisk 1</title>
+    
+
+    <!-- START CSS NAVNE GENERATOR-->
+    <style>
+        /* # gjør at man henter en ID og i dette tilfellet er det random-navn-jente (som er hvor et tilfeldig navn vises) */
+            #random-navn-jente {
+                height: 30px;
+                margin-left: 875px;
+                font-size: 40px;
+                }
+            #generate {
+                /* margin-left er hvor langt unna venstre side knappen skal være i dette tilfellet vist i px (piksler) */
+                margin-left: 811px;
+                /*  padding er høyde og bredde på boksen. i px (piksler) høyde kommer først og bredde kommer etterpå */
+                padding: 15px 72px;
+                font-size: 15px;
+            }
+            </style>
+        <!-- SLUTT CSS NAVNEGENERATOR -->
+
+<style>
+/* selve grid boksen start */
+    body {
+        /* padding og margin definerer hvor mye rom det skal være. jeg tror dette gjelder om man ikke har bakgrunnsfarge*/
+        padding: 0;
+        margin: 0;
+        
+    }
+    /* dette er høyde, vidde, størrelse ved nettleser i full vindu modus */
+    div.page {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 4fr 4fr 4fr; 
+        /* grid template går alltid kun opp til 12fr (template er høyde fordeling mellom de 3 boksene) */
+        /* grid template areas er hvilken rekkefølge boksene skal vises i */
+        grid-template-areas: 'header'
+                             'menu'
+                             /* disse 3 viser rekkefølgen på de 3 boksene, bytter man plass på disse byttes de på skjermen */
+                             'bottom'
+                             ;
+            /* dette under er utseendet til hver boks */
+    }
+    .header {
+        
+        background-image: linear-gradient(to bottom, rgb(5, 236, 252), rgb(14, 200, 213));
+        grid-area: header;
+      /* disse viser hvilken farge hvilken av boksene skal ha  */
+      /*  */
+    }
+    .menu {
+        
+        background-image: linear-gradient(to bottom, rgb(15, 189, 201), rgb(19, 143, 152));
+        grid-area: menu;
+    }
+    .bottom {
+       
+        background-image: linear-gradient(to bottom, rgb(37, 138, 145),rgb(35, 116, 121));
+        grid-area: bottom;
+    }
+
+ /* dette bestemmer når de forskjellige boksene skal bytte plass når du tar nettleseren i vindu modus */
+    @media only screen and (max-width: 600px) {             
+    }
+</style>
+<style>
+                                                   /* CSS STARTER DROPP KNAPP */
+/* .droppned i css betyr at jeg henter det class (element navnet fra diven nede i HTML kodene) */
+    .droppned {
+/* å skrive position: relative her vil la velge hvor elementene innenfor denne droppned CLASSEN skal havne på skjermen */
+            position: absolute;
+/* display: inline-block betyr at det som ståår inne i boksen står på linje (hadde jeg ikke brukt den, ville skriften ha tatt så stor vidde (width) som mulig så langt boksen strekker seg*/
+            display: inline-block;
+/* margin-left: betyr at man dytter selve dropp ned knappen fra venstre og i dette tilfellet 480px (piksler) og innholdet til knappen følger etter */
+            margin-left: 770px;
+/* padding betyr i dette tilfellet hvor mange px (piksler) jeg dytter hele knappen ned fra toppen av grid boksen */
+            padding: 20px;
+    }
+
+/* .knappen betyr at jeg henter classen(elementer fra diven nede i HTML kodene) som er selve BUTTON */
+    .knappen {
+/* padding er størrelsen (høyde og bredde) på knappen. PX er pixels, hvor mange pixels størrelse skal den være */
+            padding: 10px 40px;
+/* font-size betyr størrelsen på skriften inne i knappen. om man tar denne større enn padding, overskrider font-size padding (det vet jeg ikke hvorfor) */
+            font-size: 20px;
+    }
+
+/* her er jeg nødt til å bruke # fordi jeg lagde linkene eller knappene nede i HTML med denne type form for ID dette er kun 1 måte å gjøre det på +++++++++++++++++++++++++++++++++++++++ */
+    #droppned-innhold{
+/* position i dette tilfellet er hvor disse underknappene skal vises i forhold til droppnedknappen. Her kunne jeg valgt position:absolute eller sikkert noe annet */
+/* men relative betyr at den velger det som virker naturlig for css (tror jeg) */
+            position:relative;
+
+    }
+
+/* her er jeg nødt til å bruke # fordi jeg lagde linkene eller knappene nede i HTML med denne type form for ID dette er kun 1 måte å gjøre det på +++++++++++++++++++++++++++++++++++++++ */
+    #droppned-innhold a{
+/* display er hvordan disse hyper eksterne linkene innenfor alle <a'ene skal vises. i dette tilfellet innenfor blokken(boksen) og tidligere har jeg valgt relative og in-line */
+                display: block;
+/* font-size er størrelsen på skriften av alle disse hyper eksterne linkene */
+                font-size: 20px;
+/* background er fargen bak skriften men inne i boksen */
+                
+                background-image: linear-gradient(to right, rgb(97, 145, 148), rgb(65, 117, 120));
+/* dette er skrift fargen */
+                color: black;
+/* dette er dekorasjon rundt skriften. Her kunne jeg hatt text-decoration: underline; eller overline; eller sikkert mange andre jeg ikke vet om enda */
+                text-decoration: none;
+/* padding er mellomrom mellom hver linje, da kan man ha PX (pixel) mellomrom eller % mellomrom for eksempel */
+                padding: 5px;
+/* margin er mellomrommet mellom hver tekst så det ligner mer på bokser, her kan man teste margin-top eller kanskje andre ting */
+                margin-bottom: 1px;
+    }
+                                                        /* CSS SLUTTER DROPP KNAPP */
+</style>
+</head>
+<body>
+    <!-- selve hele siden -->
+    <div class="page">
+        <!-- disse 3 under er hver boks i HTML -->
+        <div class="header">top
+                                                         <!--HTML STARTER DROP KNAPP  -->
+<!-- center betyr at alt det som står under skal vises på midten av skjermen (hvorfor den er rød aner jeg ikke) -->
+<!-- <center> XXXXXXXXXXXXXXXXXXXXXXXXXXXXX kunne hatt <center> om ikke jeg hadde valgt margin-left: 480px i css-->
+
+    <!--div betyr seksion og her gir jeg forskjellige DIVER (seksjoner) forskjellige class navn (element navn) slik at css skal skjønne hvilken DIV jeg endrer utseendet på   -->
+        <div class="droppned">
+    <!-- button er en TAG og button betyr at det skal være en knapp som er trykkbar  -->
+    <!-- onclick gjør denne classen (elementet) om til en knapp man er nødt til å trykke på for at # elementene skal vises -->
+        <button onclick="vis_skjul()" class="knappen">droppnedknapp</button>
+    <!-- her lager jeg en ny DIV (seksjon til knappene som vil vises når knappen er aktiv) -->
+    <!-- style="display:none" er der for å si at dette ikke skal vises til å begynne med -->
+        <div style="display:none" id="droppned-innhold">
+    <!-- HREF betyr hyper tekst referanse og brukes til å identifisere en seksion innenfor en DIV, en seksion innenfor en seksion. -->
+    <!-- <a er kun et anker for hyper tekst referansen, hadde vi ikke hatt <a der så ville css tatt alt som 1 ting og ville enten ikke virket eller blitt en utrolig lang setning eller feil melding.
+        det kan lett testes -->
+            <a href="https://getacademy.moodlecloud.com/course/view.php?id=18">Moodle Start IT</a>
+            <a href="https://classroom.google.com/c/Mzc2OTE2NjUwNzNa">Google Klasserom</a>
+            <a href="https://www.w3schools.com/">w3schools</a>
+            <a href="https://github.com/">Git.Hub</a>
+            <a href="https://www.youtube.com">Yotube</a>
+            <a href="https://www.google.com">Google</a>
+         </div>
+        </div>
+<!-- </center>  XXXXXXXXXXXXXXXXXXXXXXXXXXXXX kunne hatt <center> om ikke jeg hadde valgt margin-left: 480px i css -->
+                                            <!-- HTML SLUTTER DROPP KNAPP -->
+
+
+
+
+
+                                <!--  START HTML THIS SETNING  -->
+        </div>
+        <div class="bottom">bottom
+ <!-- dette er kun for å få mellomrom mellom navnet på grid boksen bottom og det som tilhører id="obl1" -->
+ <!-- jeg har forsøkt å få ned ned ditt som footer men uten å lykkes så jeg gjorde det på denne enkle men stygge måten -->
+<br />&nbsp;<br /> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                          <!-- START HTML THIS SETNING -->
+<!-- her kan man skrive eksakt hva man vil fordi den har en id             -------------------------------------------------------------------------->                                                                   
+        <!-- denne setningen kommer ikke til å vises i det hele tatt uten javascripten på bunnen -->
+        <p id="obl1" tror man kan skrive hva man vil></p>
+        </div>
+                        <!-- SLUTT HTML THIS SETNING -->
+
+
+
+
+
+                                                 <!-- START HTML NAVNEGENERATOR -->
+        <div class="menu">menu
+
+                <div class="container"></div>
+                <h1>Tilfeldig Navn</h1>
+                <div id="random-navn-jente"></div>
+                <br>
+                <button id="generate">få tak i navn</button>
+                                              <!-- SLUTT HTML NAVNEGENERATOR -->
+               
+<!-- selve gridden slutt  -->
+
+
+
+
+
+
+
+    
+                                                <!-- START JAVASCRIPT NAVN GENERATOR-->
+<script>
+        //  const gir alle navnene innenfor id=navn en uttalelse som egentlig bare ville vært tall, javascript tar dem som tall om man ikke gjør noe mer
+        const navn = ["Kristine", "Tina",  "Line", "Anne", "Marie", "Milena", "Trine", "Ronja", "Lotte", "Tonje",
+                "Pernille", "Kine", "Kaja", "Charlotte", "Helle", "Rikke", "Sofie", "Maria",
+                "Pia", "Åse", "Gunnild", "Inger", "Kari", "Marit", "Ingrid", "Liv", "Maria", "Eva",
+                "Ida", "Hilde", "Nina", "Elisabeth", "Berit", "Kristin", "Astrid", "Bente", "Randi",
+                "Bjørg", "Solveig", "Heidi", "Silje", "Hanne", "Linda", "Tone", "Anita", "Elin", "Tove",
+                "Wenche", "Camilla", "Julie", "Hege", "Ragnhild", "Ellen", "Mona", "Ann", "Gerd", "Karin",
+                "Monica", "Emma", "Kristine", "Aud", "Helene", "Stine", "Laila", "Mari", "Thea", "Nora",
+                "Turid", "Else", "Emilie", "Sara", "Sissel", "Malin", "Frida", "Lene", "Jorunn", "Trine",
+                "Reidun", "Grethe", "May", "Lise", "Anette", "Linn", "Siri", "Cecilie", "Marte", "Vilde",
+                "Eli", "Irene", "Gro", "Amalie", "Kjersti", "Andrea", "Kristen", "Martine", "Britt", "Siv",
+                "janne", "Karoline", "Jenny", "Elise", "hanna", "Ruth", "Sigrid", "Mia", "Lena", "Rita",
+                "Maren", "Ingvild"];
+// math.floor runder hvert desimal opp til nærmeste hele tall | math.random gjør det mulig å velge tilfeldig tall (navn)
+// max i dette tilfellet tror jeg betyr at det ikke er noen spesifikk lengde på innerHTML til const navn. slik at jeg kan ta fra og legge til navn
+// (max) før og * max) etter math lar den plukke tilfeldige navn og viser at det ikke er noen maks grense, slik at jeg kan legge til og ta fra navn
+const getRandomNumber = (max) => Math.floor(Math.random() * max);
+//her ber jeg den godta hvilken som helst lengde på navn
+const getRandomName = () => 
+`${navn[getRandomNumber(navn.length)]}`;
+// setRandomName tror jeg gjør at getRandomName blir vist
+const setRandomName = () => {
+    //inner html er nesten det samme som innertext men inner html godtar mellomrom(space) mellom tekstene den henter. I dette tilfellet alle navnene ovenfor
+// her tror jeg at jeg sier hvor getRandomName skal vises. og det skal vises i id=random-navn-jente
+document.getElementById('random-navn-jente').innerHTML = getRandomName();
+}
+//her sier jeg at det er knappen generate som skal hente navn fra const navn
+document.getElementById('generate')
+//.addEventListener sammensetter handlinger uten å overskrive andre regler. her blir setRandomName og click sammensatt slik at
+// knappen virkelig viser frem navn ved å klikke på knappen
+.addEventListener('click', setRandomName);  
+    </script>
+                                                        <!-- SLUTT JAVASRIPT NAVN GENERATOR -->
+
+
+
+
+
+
+
+
+
+                                                       <!-- JAVASCRIPT STARTER DROPP NED KNAPP-->
+<script>
+    // function gir classen droppnedknapp en gjennomførelse når man trykker på den, uten denne ville ingen ting skje om man trykker på den
+        function vis_skjul (){
+// VAR gir function en eksakt avgjørelse på hva den skal gjennomføre
+            var click = document.getElementById("droppned-innhold")
+// if sier at droppned-innhold vil returnere til slik den var i starten om man trykker på den igjen
+// dette vises ved === som betyr at om ikke click.style.display og else click.style.display = (samme block/none) så går knappen tilbake til NONE (eller innaktiv).
+//og her er ikke click.style.display =   og  else click.style.display = like så den går tilbake til NONE
+                if(click.style.display ==="none"){
+                    click.style.display = "block";
+            }else{
+                click.style.display = "none";
+      }
+    }
+</script>
+       <!-- JAVASCRIPT SLUTTER DROPP NED KNAP -->
+
+
+
+
+
+
+
+       <!-- THIS SETNING JAVASCRIPT START -->
+<script>
+ // her lager jeg et objekt som id="obl1" skal vises som:
+ // var eklærer at dette er en variabel
+  var person = {
+      //first name og lastname blir en tråd til fullname
+  firstName: "oblig 1  ",
+  midldeName:  "&copy;",
+  lastName : " 2019",
+  fullName : function() {
+      //function gjør det mulig å gjennomføre fullname slik at man kan vise dette istendenfor det som står i html'n til id=obl1
+  return this.firstName + this.midldeName +  this.lastName;
+  }
+  };
+    // viser frem dataen til obl1 som person fullname
+document.getElementById("obl1").innerHTML = person.fullName();                                                          
+</script>
+    <!-- THIS SETNING JAVASCRIPT SLUTT -->
+
+
+
+
+</body>
+</html>
